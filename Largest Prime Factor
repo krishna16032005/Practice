@@ -1,0 +1,38 @@
+#include <math.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <limits.h>
+#include <stdbool.h>
+#define and &&
+
+int main(){
+    int t; 
+    scanf("%d",&t);
+    for(int a0 = 0; a0 < t; a0++){
+        long n; 
+        scanf("%ld",&n);
+        long k = 0, srt = (long) sqrt(n), copy = n;
+        if (copy%2 == 0) 
+        {
+            k = 2;
+            while (copy%2==0)
+            copy/=2;
+        }
+        for (long i = 3; i <= srt; i+=2)
+        {
+            if (copy%i == 0)
+            {
+            k = i;
+            while (copy%i == 0)
+            copy/=i;
+            }
+        }
+        if (copy > k and copy%2!=0)
+        k = copy;
+        printf("%ld\n", k);
+        
+    }
+    return 0;
+}
