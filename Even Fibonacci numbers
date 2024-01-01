@@ -1,0 +1,46 @@
+#include <math.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <limits.h>
+#include <stdbool.h>
+long fib(long);
+int main(){
+    int t; 
+    scanf("%d",&t);
+    for(int a0 = 0; a0 < t; a0++){
+        long n; 
+        scanf("%ld",&n);
+        long sum = 0, k = 0;
+        long i = 2;
+        while (k < n)
+        {
+            
+           sum += k;
+           k = fib(i);
+           i+=3;
+        }
+        printf("%ld\n", sum);
+        
+    }
+
+    return 0;
+}
+    long fib(long i)
+    {
+        if (i==1) return 1;
+        if (i==2) return 2;
+        long fib_1 = 1;
+        long fib_2 = 2;
+        long a, b, c;
+        for (int j = 3; j <= i; j++ )
+        {
+            b = fib_1 + fib_2;
+            c = fib_2;
+            fib_2 = b;
+            fib_1 = c;         
+        }
+        return b;
+    }
+
