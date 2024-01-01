@@ -1,0 +1,34 @@
+#include <math.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <limits.h>
+#include <stdbool.h>
+
+int main(){
+    int t; 
+    scanf("%d",&t);
+    for(int a0 = 0; a0 < t; a0++){
+        int n, prod = -1, max_prod = -1; 
+        scanf("%d",&n);
+        int k;
+        k = (n%2 == 0)?n/2:(n/2 + 1);
+        for (int a = 1; a < k; a++)
+        {
+            for (int b = (a > k - a)?a:(k-a); b < k; b++)
+            {
+                if (((2*a)+(2*b)-n) <= 0) 
+                continue;
+                if ((2*a*b) == n*((2*a)+(2*b)-n))
+                {
+                    prod = a*b*(n-a-b);
+                    max_prod = (prod>max_prod)?prod:max_prod;
+                }
+            }
+        }
+        printf("%d\n", max_prod);
+    }
+
+    return 0;
+}
