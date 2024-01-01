@@ -1,0 +1,43 @@
+#include <math.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <limits.h>
+#include <stdbool.h>
+
+int main(){
+    int grid[20][20];
+    for(int grid_i = 0; grid_i < 20; grid_i++){
+    	for(int grid_j = 0; grid_j < 20; grid_j++){
+    		
+    		scanf("%d",&grid[grid_i][grid_j]);
+    	}
+    }
+    long prod = 1, max_prod = 0;
+    for (int i = 0; i <20; i++)
+    {
+        for (int j = 0; j < 17; j++)
+        {
+            prod = grid[i][j]*grid[i][j+1]*grid[i][j+2]*grid[i][j+3];
+            if (prod > max_prod) max_prod = prod;
+            prod = grid[j][i]*grid[j+1][i]*grid[j+2][i]*grid[j+3][i];
+            if (prod > max_prod) max_prod = prod;
+        }
+    }
+        for (int i = 0; i < 17; i++)
+        {
+            for (int j = 0; j < 17; j++)
+            {
+                prod = grid[i][j]*grid[i+1][j+1]*grid[i+2][j+2]*grid[i+3][j+3];
+                if (prod > max_prod) max_prod = prod;
+                prod = grid[19-i][j]*grid[18-i][j+1]*grid[17-i][j+2]*grid[16-i][j+3];
+                if (prod > max_prod) max_prod = prod;
+                
+                
+            }
+        }
+        printf("%ld\n", max_prod);
+
+    return 0;
+}
