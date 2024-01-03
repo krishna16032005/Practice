@@ -1,0 +1,20 @@
+#include <math.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <limits.h>
+#include <stdbool.h>
+
+int main(){
+    int t; 
+    scanf("%d",&t);
+    for(int a0 = 0; a0 < t; a0++){
+        int n; 
+        scanf("%d",&n);
+        long long sum = ((long long)(n*(n+1))/2), sqr_sum =(long long) ((long long) (n*(n+1))*(2*n+1))/6;
+        printf("%lld\n", sum*sum - sqr_sum);
+    }
+    
+    return 0;
+}
