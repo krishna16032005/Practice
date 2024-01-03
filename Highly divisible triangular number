@@ -1,0 +1,54 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main() {
+
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+    int t;
+    scanf("%d", &t);
+    for (int a0 = 0; a0 < t; a0++)
+    {
+        int n;
+        scanf("%d", &n);
+        long k = 2, temp = 0, copy;
+        int count  = 1;
+        while (count <= n)
+        {
+            long f = k*(k+1)/2;
+            copy = f, count = 1;
+            while (f%2 == 0)
+            {
+                f/=2;
+                temp++;
+            }
+            count*=(temp+1);
+            temp = 0;
+            while (f%3 == 0)
+            {
+                f/=3;
+                temp++;
+            }
+            count*=(temp+1);
+            temp = 0;
+            int l = 2;
+            for (long i = 5; i*i<= f; i+=l)
+            {
+                l = (l == 2 && i>=7)?4:2;
+                while (f%i == 0)
+                {
+                    f/=i;
+                    temp++;
+                }
+                count*=(temp+1);
+                temp = 0;
+            }
+            if (f!=1) 
+            count*=2;
+            k++;
+        }
+        printf("%ld\n", copy);   
+    }
+    return 0;
+}
