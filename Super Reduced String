@@ -1,0 +1,39 @@
+char* superReducedString(char* s) {
+
+    char *result;
+    while (1)
+    {
+        char *result;
+        result = (char *) malloc(1);
+        int i = 0, f = 1, count = 0, g = 1, m = 1;
+        while (s[i] != 0)
+        {
+        char k = s[f];
+        if (s[i]  == k)
+        {
+            f++;
+            g++;
+        }
+        else {
+            if ((g)%2==1)
+            result[count++]  = s[i], g = 1;
+            else g = 1;
+            f++;
+            result = realloc(result, count+1);
+            if (result == NULL)
+            while (result == NULL)
+            result = realloc(result, count+1);
+               
+        }
+        i++;
+        }
+        result[count] = 0;
+        if (strcmp(result, s) == 0)
+        {s=result; 
+        break;}
+        else s = result;
+        
+    }
+    return (s[0] == 0?"Empty String":s);
+
+}
